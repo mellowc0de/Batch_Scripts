@@ -9,14 +9,15 @@ echo **requires administrator privileges**
 echo ..............................................
 echo Menu Options:
 echo 1. System - Disk Defrag
-echo 2. System - File Check Scan
-echo 3. DISM Scan - Check Health
-echo 4. DISM Scan - Scan Health
-echo 5. DISM Scan - Restore Health
-echo 6. Reset Winstock
-echo 7. Exit
+echo 2. System - Clean-up Manager
+echo 3. System - File Check Scan
+echo 4. DISM Scan - Check Health
+echo 5. DISM Scan - Scan Health
+echo 6. DISM Scan - Restore Health
+echo 7. Reset Winstock
+echo 8. Exit
 echo ..............................................
-set /p choice=Enter your choice (1/2/3/4/5/6/7):
+set /p choice=Enter your choice (1/2/3/4/5/6/7/8):
 
 :: Change directory to System32 folder
 cd %windir%\System32
@@ -36,18 +37,37 @@ if %choice%==1 (
     echo .
     echo ..
     echo ...
-    echo System File Check Scan completed.
+    echo System Disk Defrag completed.
     pause
     goto menu
-) 
+)
 if %choice%==2 (
     echo ..............................................
-    echo You selected - 2. System File Check Scan.
+    echo You selected - 2. System Clean-up Manager
     echo ..............................................
     echo .
     echo ..
     echo ...
-    echo starting System File Check
+    echo starting System Clean-up Manager...
+    echo .
+    echo ..
+    echo ...
+    cleanmgr /d C: /verylowdisk
+    echo .
+    echo ..
+    echo ...
+    echo System Clean-up Manager completed.
+    pause
+    goto menu
+) 
+if %choice%==3 (
+    echo ..............................................
+    echo You selected - 3. System File Check Scan.
+    echo ..............................................
+    echo .
+    echo ..
+    echo ...
+    echo starting System File Check...
     echo .
     echo ..
     echo ...
@@ -59,10 +79,14 @@ if %choice%==2 (
     pause
     goto menu
 ) 
-if %choice%==3 (
+if %choice%==4 (
     echo ..............................................
-    echo You selected - 3. DISM Scan - Check Health.
+    echo You selected - 4. DISM Scan - Check Health.
     echo ..............................................
+    echo .
+    echo ..
+    echo ...
+	echo starting DISM Scan - Check Health...
     echo .
     echo ..
     echo ...
@@ -74,10 +98,14 @@ if %choice%==3 (
     pause
     goto menu
 ) 
-if %choice%==4 (
+if %choice%==5 (
     echo ..............................................
-    echo You selected - 4. DISM Scan - Scan Health
+    echo You selected - 5. DISM Scan - Scan Health
     echo ..............................................
+    echo .
+    echo ..
+    echo ...
+    echo starting DISM Scan - Scan Health...
     echo .
     echo ..
     echo ...
@@ -89,9 +117,9 @@ if %choice%==4 (
     pause
     goto menu
 ) 
-if %choice%==5 (
+if %choice%==6 (
     echo ..............................................
-    echo You selected - 5. DISM Scan - Restore Health
+    echo You selected - 6. DISM Scan - Restore Health
     echo ..............................................
     echo .
     echo ..
@@ -104,9 +132,9 @@ if %choice%==5 (
     pause
     goto menu
 ) 
-if %choice%==6 (
+if %choice%==7 (
     echo ..............................................
-    echo You selected - 6. Reset Winsock
+    echo You selected - 7. Reset Winsock
     echo ..............................................
     echo .
     echo ..
@@ -119,11 +147,11 @@ if %choice%==6 (
     pause
     goto menu
 ) 
-if %choice%==7 (
+if %choice%==8 (
     echo Exiting the menu
     exit /b 0
 ) else (
-    echo Invalid choice. Please enter a valid option (1/2/3/4/5/6/7).
+    echo Invalid choice. Please enter a valid option (1/2/3/4/5/6/7/8).
     pause
     goto menu
 )
